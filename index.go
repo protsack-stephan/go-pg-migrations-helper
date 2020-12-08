@@ -50,7 +50,7 @@ func (idx *Index) Name() string {
 		idx.Method = IndexMethodBTree
 	}
 
-	return fmt.Sprintf("%s_%s_%s_%s",
+	return fmt.Sprintf("idx_%s_%s_%s_%s",
 		idx.Table,
 		strings.Join(idx.Columns, "_"),
 		unique,
