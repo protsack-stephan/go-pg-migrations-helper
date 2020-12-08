@@ -1,0 +1,1 @@
+# GO PostgreSQL migrations helper
