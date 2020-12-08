@@ -11,7 +11,8 @@ const fkTestTable = "address"
 const fkTestProperty = "person_id"
 const fkTestReferenceTable = "people"
 const fkTestReferenceProperty = "id"
-const fkTestAddSQL = "ALTER TABLE %s ADD CONSTRAINT fk_%s_%s_ref_%s_%s FOREIGN KEY (%s) REFERENCES %s (%s) ON DELETE CASCADE;"
+const fkTestOnDeleteAction = ActionCascade
+const fkTestAddSQL = "ALTER TABLE %s ADD CONSTRAINT fk_%s_%s_ref_%s_%s FOREIGN KEY (%s) REFERENCES %s (%s) ON DELETE %s;"
 const fkTestDropSQL = "ALTER TABLE %s DROP CONSTRAINT fk_%s_%s_ref_%s_%s;"
 
 func TestForeignKey(t *testing.T) {
@@ -20,7 +21,7 @@ func TestForeignKey(t *testing.T) {
 		Properties:          []string{fkTestProperty},
 		ReferenceTable:      fkTestReferenceTable,
 		ReferenceProperties: []string{fkTestReferenceProperty},
-		OnDelete:            ActionCascade,
+		OnDelete:            fkTestOnDeleteAction,
 	}
 
 	assert.Equal(t,
@@ -33,7 +34,8 @@ func TestForeignKey(t *testing.T) {
 			fkTestReferenceProperty,
 			fkTestProperty,
 			fkTestReferenceTable,
-			fkTestReferenceProperty),
+			fkTestReferenceProperty,
+			fkTestOnDeleteAction),
 		fk.Add())
 	assert.Equal(t,
 		fmt.Sprintf(
@@ -44,7 +46,4 @@ func TestForeignKey(t *testing.T) {
 			fkTestReferenceTable,
 			fkTestReferenceProperty),
 		fk.Drop())
-
-	fmt.Println(fk.Add())
-	fmt.Println(fk.Drop())
 }
