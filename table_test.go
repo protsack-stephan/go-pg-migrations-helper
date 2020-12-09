@@ -40,7 +40,6 @@ func TestTable(t *testing.T) {
 		testTableColumns[0].Define(),
 		testTableColumns[1].Define(),
 		testTablePrimaryKey,
-	),
-		table.Create())
+	), table.Create())
 	assert.Equal(t, fmt.Sprintf(testTableDropResult, testTableName), table.Drop())
 }
