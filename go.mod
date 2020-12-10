@@ -1,4 +1,4 @@
-module go-pg-migrations-helper
+module github.com/protsack-stephan/go-pg-migrations-helper
 
 go 1.15
 
