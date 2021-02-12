@@ -12,8 +12,8 @@ table := pgmigrations.Table{
     pgmigrations.ConstraintPrimaryKey: []string{
       pgmigrations.Columns([]string{
         "user_id",
-        "resource_type",
-        "resource_id",
+        "ninja_type",
+        "ninja_id",
       }),
     },
   },
@@ -43,5 +43,5 @@ table := pgmigrations.Table{
 
 // then by calling 
 fmt.Println(table.Create()) // you will get SQL generated CREATE TABLE ninjas ...
-//after you can just put that SQL into db.Exec and that's it
+// after you can just put that SQL into db.Exec and that's it
 ```
