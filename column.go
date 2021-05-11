@@ -24,6 +24,11 @@ func (column *Column) Alter(sql string) string {
 	return fmt.Sprintf("ALTER TABLE %s ALTER COLUMN %s %s;", column.Table, column.Name, sql)
 }
 
+// Rename rename table column
+func (column *Column) Rename(name string) string {
+	return fmt.Sprintf("ALTER TABLE %s RENAME COLUMN %s TO %s;", column.Table, column.Name, name)
+}
+
 // Define describing column name and type
 func (column *Column) Define() string {
 	return fmt.Sprintf("%s %s", column.Name, column.Type)
